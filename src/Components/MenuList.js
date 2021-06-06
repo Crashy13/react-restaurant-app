@@ -1,13 +1,18 @@
 import { Component } from 'react';
 
-class MenuList extends Component {
+function MenuList(props) {
 
-
-  render() {
-    return
-  }
-
-  }
+  const items = props.items.map((item) => (
+    <li key={item.name}>
+    <h2>{item.name}</h2>
+    <p>{item.description}</p>
+    <p>{item.price}</p>
+    </li>
+  ));
+  return(
+    <ul>{items}</ul>
+  )
+}
 
 
 export default MenuList
