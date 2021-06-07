@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import './App.css';
 import MenuList from './MenuList'
+import MenuItem from './MenuItem'
 
 class App extends Component {
   constructor(props) {

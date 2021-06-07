@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import MenuItem from './MenuItem'
 
 function MenuList(props) {
 
