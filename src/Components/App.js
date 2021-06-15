@@ -26,84 +26,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const items = [
-        {
-          name: "Pepperoni",
-          description: "A round crust with sauce, cheese, and pepperonis",
-          price: 13,
-          category: "Pizza",
-        },
-        {
-          name: "Vegan Delight",
-          description: "A cornmeal, carrot and chia crust with sauce, vegan cheese, onions, peppers, mushrooms and broccoli",
-          price: 13,
-          category: "Pizza",
-        },
-        {
-          name: "Cheese",
-          description: "A simple yet delicious pie with a three cheese blend",
-          price: 11,
-          category: "Pizza",
-        },
-
-        {
-          name: "Caesar",
-          description: "Crisp romaine lettuce mixed with crutons and parmesan cheese tossed in caesar dressing",
-          price: 10,
-          category: "Salad",
-        },
-        {
-          name: "Garden",
-          description: "Spring leaf mix with tomato, cheese, crutons, and red onion",
-          price: 8,
-          category: "Salad",
-        },
-        {
-          name: "Grilled Chicken",
-          description: "Chicken on lettuce",
-          price: 10,
-          category: "Salad",
-        },
-
-        {
-          name: "Breadsticks",
-          description: "Freshly baked breadsticks drizzled in garlic butter",
-          price: 6,
-          category: "Side",
-        },
-        {
-          name: "Garlic Knots",
-          description: "Bite sized bread knots slathered with a garlic butter",
-          price: 6,
-          category: "Side",
-        },
-        {
-          name: "Fried Ravioli",
-          description: "Cheese stuffed ravioli fried to golden perfection",
-          price: 8,
-          category: "Side",
-        },
-
-        {
-          name: "Hot Tea",
-          description: "Ask the server for daily choices",
-          price: 3,
-          category: "Drink",
-        },
-        {
-          name: "Soda",
-          description: "Coke products only",
-          price: 3,
-          category: "Drink",
-        },
-        {
-          name: "Sangria",
-          description: "A chilled fruity red wine",
-          price: 5,
-          category: "Drink",
-        }
-      ];
-    this.setState({ items });
+    fetch('/api/v1/menu/')
+      .then(response => response.json())
+      .then(data => this.setState({ items: data }));
   }
 
   addItemToOrder(item){
