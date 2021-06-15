@@ -1,19 +1,34 @@
-import { Component } from 'react';
+import { Component } from 'react'
 import MenuItem from './MenuItem'
 
-function MenuList(props) {
+class MenuList extends Component {
 
-  const items = props.items.map((item) => (
-    <li key={item.name}>
-    <h2>{item.name}</h2>
-    <p>{item.description}</p>
-    <p>{item.price}</p>
-    </li>
-  ));
-  return(
-    <ul>{items}</ul>
+  render(){
+  const categories = this.props.items.map(item => item.category);
+  const uniqueCategories = [...new Set(categories)];
+
+  const menu = uniqueCategories.map((category, index) => {
+
+    const items = this.props.items
+      .filter(item => item.category === category)
+      .map((item, index) => (
+        <MenuItem key={item.name} item={item} addItemToOrder={this.props.addItemToOrder}/>
+      ));
+
+      return (
+        <>
+          <h2 className="category">{category}</h2>
+          <ul>{items}</ul>
+        </>
+      );
+  });
+
+  return (
+    <>
+      {menu}
+    </>
   )
 }
-
+}
 
 export default MenuList
